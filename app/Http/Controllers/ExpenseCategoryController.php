@@ -18,7 +18,7 @@ class ExpenseCategoryController extends Controller
         if (!Auth::user()->allowed('expense_category_read')) {
             return response()->json(['message' => 'You have no permission to perform this task.'], 403);
         }
-        return new ExpenseCategoriesCollection(ExpenseCategories::orderByDesc('entry_date')->get());
+        return new ExpenseCategoriesCollection(ExpenseCategories::orderBy('name')->get());
     }
 
     public function show($id)
