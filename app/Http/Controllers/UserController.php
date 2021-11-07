@@ -28,10 +28,10 @@ class UserController extends Controller
             $user->show_api_token = true;
             return (new UserResource($user))
                 ->response()
-                ->setStatusCode(201);
+                ->setStatusCode(200);
         }
 
-        return response()->json(null, 401);
+        return response()->json(["message" => "Invalid login credentials."], 401);
     }
 
     public function index()

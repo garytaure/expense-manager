@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 
 Route::post('/login', 'UserController@login');
 Route::middleware(['apitokenauth'])->group(function () {
+    Route::get('/dashboard', 'HomeController@index');
+
     Route::get('/users', 'UserController@index');
     Route::post('/users', 'UserController@store');
     Route::get('/users/{id}', 'UserController@show');

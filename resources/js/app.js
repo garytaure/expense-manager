@@ -1,22 +1,27 @@
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
+import axios from "axios";
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+axios.defaults.withCredentials = true;
+axios.defaults.baseURL = "http://localhost:8000/api/";
 
-require('./bootstrap');
-require('../sass/app.scss')
-import Vue from 'vue'
+axios.interceptors.response.use(undefined, function (error) {
+  if (error) {
+    const originalRequest = error.config;
+    if (error.response.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+      store.dispatch("LogOut");
+      return router.push("/login");
+    }
+  }
+});
 
-window.Vue = require('vue');
+Vue.config.productionTip = false;
 
-// router
-import router from './routes.js';
-window.router = router;
-window.Fire = new Vue();
-
-const app = new Vue({
-    el: '#app',
-    router,
-}).$mount('#app');
+new Vue({
+  store,
+  router,
+  render: (h) => h(App),
+}).$mount("#app");

@@ -16,6 +16,7 @@ class UserRoles extends JsonResource
     {
         return [
             'id'         => $this->id,
+            'name'       => $this->name,
             'role_create' => $this->role_create,
             'role_read' => $this->role_read,
             'role_update' => $this->role_update,

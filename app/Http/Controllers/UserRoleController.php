@@ -10,6 +10,7 @@ use App\UserRoles;
 use App\User;
 use App\Http\Resources\UserRoles as UserRoleResource;
 use App\Http\Resources\UserRolesCollection;
+use Illuminate\Support\Facades\Auth;
 
 class UserRoleController extends Controller
 {

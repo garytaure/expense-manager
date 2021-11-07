@@ -14,7 +14,41 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/login', function () {
+    return view('welcome');
+});
+Route::get('/dashboard', function () {
+    return view('welcome');
+});
+Route::get('/register', function () {
+    return view('welcome');
+});
 
-Auth::routes(['register' => false]);
+Route::get('/users', function () {
+    return view('welcome');
+});
+Route::get('/users/{id}', function () {
+    return view('welcome');
+});
+Route::get('/user-roles', function () {
+    return view('welcome');
+});
+Route::get('/user-roles/{id}', function () {
+    return view('welcome');
+});
+Route::get('/expense-cateogries', function () {
+    return view('welcome');
+});
+Route::get('/expense-cateogries/{id}', function () {
+    return view('welcome');
+});
+Route::get('/expenses', function () {
+    return view('welcome');
+});
+Route::get('/expenses/{id}', function () {
+    return view('welcome');
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Auth::routes(['register' => false]);
+
+//Route::get('/home', 'HomeController@index')->name('home');
